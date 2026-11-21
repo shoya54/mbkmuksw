@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/mbkmuksw/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth | MBKM-UKSW</title>
+    <link rel="icon" href="assets/images/dakproject.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js'></script>
+    <style>
+      body { margin-top: 20px; background: #f6f9fc; }
+      .bg-login { padding: 0; background-image: url(https://cdn.jsdelivr.net/gh/hoshoshos/appscript@main/UKSW.bgmakara.png); background-size: cover; height: 100%; position: relative; }
+      .bg-login .overlay { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.4); }
+      .bg-login .account-testimonial { text-align: center; color: #fff; position: absolute; margin: 0 auto; padding: 0 1.75rem; bottom: 3rem; left: 0; right: 0; }
+      input#inputPwd {padding-right:40px;}
+      i#togglePwd { float: right; margin-left: -25px; margin-top: -30px; right: 10px; position: relative; z-index: 2; cursor: pointer;}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="main-wrapper" class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-10">
+          <div class="card border-0">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-6">
+                  <div class="p-5 my-5">
+                    <div class="mb-4">
+                      <img src="https://cdn.jsdelivr.net/gh/hoshoshos/appscript@main/UKSW.bgwhite.png" height="45px" alt="Logo UKSW" />
+                      <!--img src="https://cdn.jsdelivr.net/gh/hoshoshos/appscript@main/Berdampak-Logo_tersier1_bgwhite.png" height="45px" alt="Logo Diktisaintek Berdampak" /-->
+                    </div>
+                    <div class="mb-4">
+                      <h6 class="h5 mb-0">Apps</h6>
+                      <p class="text-muted">Login</p>
+                    </div>
+                    <div id="errmsg" class="alert alert-warning" role="alert"><?= errmsg ?></div>
+                    <form method="post" action="<?!= ScriptApp.getService().getUrl() ?>?auth">
+                      <div class="mb-3">
+                        <label>Username:</label><input type="text" class="form-control" name="username" id="inputUsr">
+                      </div>
+                      <div class="mb-3">
+                        <label>Password:</label><input type="password" class="form-control" name="password" id="inputPwd"><i class="bi bi-eye-slash" id="togglePwd"></i>
+                      </div>
+                      <div class="d-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-sm btn-primary">Login <i class="bi bi-box-arrow-in-right"></i></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-inline-block">
+                  <div class="bg-login rounded-right"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      $(document).ready(function() {
+        sessionStorage.clear();
+        if($('#errmsg').html() == '') {
+          $('#errmsg').css('display','none');
+        }
+      });
+  
+      $("#togglePwd").on("click", function() {
+        const pwd = $(this).siblings('input');
+        if(pwd.attr('type') === 'password') {
+          pwd.attr('type','text');
+          $(this).prop('class','bi bi-eye');
+        } else {
+          pwd.attr('type','password');
+          $(this).prop('class','bi bi-eye-slash');
+        }
+      });
+    </script>
+  </body>
+</html>
