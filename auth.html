@@ -23,6 +23,44 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   </head>
+  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+    <main class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+      <div class="card border-0 shadow-sm p-4" style="width: 100%; max-width: 380px;">
+        <div class="d-flex align-items-center justify-content-center gap-3 pb-3 mb-3 border-bottom">
+          <img src="assets/images/dakproject.png" alt="Logo DAKProject" width="72" class="rounded">
+          <div class="lh-sm">
+            <h5 class="fw-bold m-0 text-dark">MBKM UKSW</h5>
+            <span class="text-muted small">Login User</span>
+          </div>
+        </div>
+                    <form method="post" action="<?!= ScriptApp.getService().getUrl() ?>?auth">
+                      <div class="mb-3">
+                        <label>Username:</label><input type="text" class="form-control" name="username" id="inputUsr">
+                      </div>
+                      <div class="mb-3">
+                        <label>Password:</label><input type="password" class="form-control" name="password" id="inputPwd"><i class="bi bi-eye-slash" id="togglePwd"></i>
+                      </div>
+                      <div class="d-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-sm btn-primary">Login <i class="bi bi-box-arrow-in-right"></i></button>
+                      </div>
+                    </form>
+        <form method="post" action="" id="formLogin">
+          <div class="mb-3">
+            <label for="inputUsr" class="form-label small fw-semibold text-secondary">Username:</label>
+            <input type="text" id="inputUsr" class="form-control" placeholder="Masukkan username" required>
+          </div>
+          <div class="mb-4">
+            <label for="inputPwd" class="form-label small fw-semibold text-secondary">Password:</label>
+            <input type="password" id="inputPwd" class="form-control" placeholder="Masukkan password" required>
+            <i class="bi bi-eye-slash" id="togglePwd"></i>
+          </div>
+          <div class="d-flex justify-content-md-end">
+            <button type="submit" class="btn btn-sm btn-primary">Login<i class="bi bi-box-arrow-in-right ms-2"></i></button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
   <body>
     <div id="main-wrapper" class="container">
       <div class="row justify-content-center">
@@ -41,17 +79,7 @@
                       <p class="text-muted">Login</p>
                     </div>
                     <div id="errmsg" class="alert alert-warning" role="alert"><?= errmsg ?></div>
-                    <form method="post" action="<?!= ScriptApp.getService().getUrl() ?>?auth">
-                      <div class="mb-3">
-                        <label>Username:</label><input type="text" class="form-control" name="username" id="inputUsr">
-                      </div>
-                      <div class="mb-3">
-                        <label>Password:</label><input type="password" class="form-control" name="password" id="inputPwd"><i class="bi bi-eye-slash" id="togglePwd"></i>
-                      </div>
-                      <div class="d-flex justify-content-md-end">
-                        <button type="submit" class="btn btn-sm btn-primary">Login <i class="bi bi-box-arrow-in-right"></i></button>
-                      </div>
-                    </form>
+
                   </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-inline-block">
